@@ -26,14 +26,13 @@ class Piano extends React.Component {
         this.setState({
           pressed: updatedPressed,
         });
-        this.playNote(KEYBOARD_TO_NOTES[key]);
       }
     
       handleKeyUp = (event) => {
         const index = this.state.pressed.indexOf(event.key);
         if (index > -1) {
           this.setState(state => ({
-            pressedKeys: state.pressed.splice(index, 1)
+            pressed: state.pressed.splice(index, 1)
           }));
         }
       }

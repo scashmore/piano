@@ -20,7 +20,7 @@ class Key extends React.Component {
             keyClass += " sharp";
         }
         if (isPressed) {
-            keyClass =+ " pressed"
+            keyClass += " pressed"
         }
         
         let key;
