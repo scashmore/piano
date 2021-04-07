@@ -4,3 +4,11 @@
     width: 60px;
     border: 2px solid black;
 }
+.key-name {
+    position: relative;
+    color: black;
+    font-weight: 500;
+    font-size: 35px;
+    margin-top: 240px;
+    pointer-events: none;
+}
