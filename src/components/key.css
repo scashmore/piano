@@ -21,3 +21,6 @@
     width: 30px;
     z-index: 2;
 }
+.key.pressed, .key.sharp.pressed {
+    background-color: rgb(228, 161, 235);
+} 
