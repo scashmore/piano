@@ -16,34 +16,34 @@ class Piano extends React.Component {
 
     playKey = (note) => {
         if (!_.isEmpty(note)) {
-          const noteAudio = new Audio(document.getElementById(note).src);
-          noteAudio.play();
+            const noteAudio = new Audio(document.getElementById(note).src);
+            noteAudio.play();
         }
-      }
+    }
 
     handleKeyDown = (event) => {
         if (event.repeat) {
-          return;
+            return;
         }
         const key = event.key;
         const updatedPressed = [...this.state.pressed];
         if (!updatedPressed.includes(key) && KEYS.includes(key)) {
-          updatedPressed.push(key);
+            updatedPressed.push(key);
         }
         this.setState({
-          pressed: updatedPressed,
+            pressed: updatedPressed,
         });
         this.playKey(KEYBOARD_TO_NOTES[key]);
-      }
-    
-      handleKeyUp = (event) => {
+    }
+
+    handleKeyUp = (event) => {
         const index = this.state.pressed.indexOf(event.key);
         if (index > -1) {
-          this.setState(state => ({
-            pressed: state.pressed.splice(index, 1)
-          }));
+            this.setState(state => ({
+                pressed: state.pressed.splice(index, 1)
+            }));
         }
-      }
+    }
 
     componentDidMount = () => {
         window.addEventListener('keydown', this.handleKeyDown);
@@ -51,30 +51,32 @@ class Piano extends React.Component {
     }
 
     render() {
-        const keys = _.map(NOTES, (notes, index) => {
+        const keys = _.map(NOTES, (note, index) => {
             return (
                 <Key
                     key={index}
-                    note={notes}
+                    note={note}
                     pressed={this.state.pressed}
                 />
             );
         });
-    const audioFiles =_.map(NOTES, (note, index) => {
-        <audio
-        id={note}
-        key={index}
-        src={`../../audio/${note}.mp3`}
-        />
-    });
+        const audioFiles = _.map(NOTES, (note, index) => {
+           return (
+            <audio
+                id={note}
+                key={index}
+                src={`../../audio/${note}.mp3`}
+            />
+           )
+        });
         return (
             <div>
-            <div className="piano" >
-                {keys}
-            </div>
-            <div>
-                {audioFiles}
-            </div>
+                <div className="piano" >
+                    {keys}
+                </div>
+                <div>
+                    {audioFiles}
+                </div>
             </div>
         );
     }
