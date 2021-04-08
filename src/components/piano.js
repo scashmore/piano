@@ -38,7 +38,7 @@ class Piano extends React.Component {
 
     handleKeyUp = (event) => {
         const index = this.state.pressed.indexOf(event.key);
-        if (index > -1) {
+        if (index > 0) {
             this.setState(state => ({
                 pressed: state.pressed.splice(index, 1)
             }));
